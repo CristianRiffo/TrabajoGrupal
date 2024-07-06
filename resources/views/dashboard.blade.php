@@ -5,13 +5,42 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Usuarios</h5>
+                    <p class="card-text">10</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Publicaciones</h5>
+                    <p class="card-text">25</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Categorias</h5>
+                    <p class="card-text">4</p>
                 </div>
             </div>
         </div>
     </div>
+    <h1 style="text-align:center; margin-top:20px;">
+        @hasrole('admin')
+            Hola tienes usuario: Administrador
+          @else
+            @hasrole('writer')
+                Hola tienes usuario: Escritor
+            @else
+                Hola tienes usuario: Visita
+            @endhasrole
+          @endhasrole
+    </h1>
+    
 </x-app-layout>
