@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,11 @@ class DatabaseSeeder extends Seeder
         $user->saveOrFail();
         $user->assignRole('admin');
 
+        $category = new Category([
+            'title' => 'Sin categoria',
+            'slug' => 'uncategorized'
+        ]);
+        $category->saveOrFail();
     }
 }
 
