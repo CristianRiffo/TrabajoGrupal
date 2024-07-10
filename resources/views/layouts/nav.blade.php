@@ -1,6 +1,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  ul.nav.nav-pills.flex-column.mb-auto li a{
+    margin:1px;
+    height: 38px;
+    border-radius: 5px;
+  }
 
+  ul.nav.nav-pills.flex-column.mb-auto li a:hover{
+    background-color: #080d20;
+    color: white !important;
+  }
+
+</style>
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="width: auto;">
     <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;height: 100%;">
         <a href="/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -23,20 +35,17 @@
           @hasrole('admin')
           <li>
             <a href="#" class="nav-link link-body-emphasis">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
               Usuarios
             </a>
           </li>
           @endhasrole
           <li>
             <a href="#" class="nav-link link-body-emphasis">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
               Publicaciones
             </a>
           </li>
           <li>
             <a href="#" class="nav-link link-body-emphasis">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
               Categorias
             </a>
           </li>
@@ -75,8 +84,7 @@
             </svg>
         </button>
       @endhasanyrole
-        <a href="/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <a href="/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ml-3">
         <span class="fs-4">{{_("Blog Aiep")}}</span>
         </a>
     </header>
