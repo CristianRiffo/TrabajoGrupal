@@ -32,5 +32,14 @@
         </div>
     </div>
     
-    
+    @foreach ($posts as $post)
+
+        {{ _('Titulo: '.$post->title) }}<br>
+        {{ _('Slug: '.$post->slug) }}<br>
+        {{ _('Content: '.$post->content) }}<br>
+        {{ _('Posteado: '.$post->posted) }}<br>
+        {{ _('Categoria: '.$post->category->title) }}<br>
+        {{ _('Autor: '.$post->user->name) }}<br>
+        {{ _('--------------------------------------')}}<br>
+    @endforeach
 </x-app-layout>

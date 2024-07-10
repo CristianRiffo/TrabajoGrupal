@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Post;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,7 +12,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $countUsers = User::count();
-    return view('dashboard', ['countUsers' => $countUsers]);
+    $posts = Post::get();
+    return view('dashboard', ['countUsers' => $countUsers,'posts'=>$posts]);
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
