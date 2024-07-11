@@ -123,7 +123,7 @@ main{
     outline: none;
 }
 
-.contenedor__login-register form button{
+.contenedor__login-register button{
     padding: 10px 40px;
     margin-top: 40px;
     border: none;3
@@ -133,10 +133,8 @@ main{
     cursor: pointer;
     color: white;
     outline: none;
+    width:100%;
 }
-
-
-
 
 .formulario__login{
     opacity: 1;
@@ -178,8 +176,9 @@ main{
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                     <input type="password" placeholder="Contraseña" name="password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     
-                        <input type="button" value="Ingresar" />
+                    <button>Ingresar</button>
                      
                 </form>
 
