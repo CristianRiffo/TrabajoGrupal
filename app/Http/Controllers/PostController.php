@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,18 +15,6 @@ class PostController extends Controller
     {
         $posts = Post::get();
         return view('posts.index', compact('posts'));
-        /*
-        return Post::create(
-            [
-                'title' => 'test',
-                'slug' => 'test',
-                'content' => 'conten test',
-                'category_id' => 1,
-                'user_id' => 1,
-                'posted' => 1
-            ]
-        );
-        */
     }
 
     /**
@@ -33,7 +22,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::get();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -41,7 +31,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+        return redirect()->route('posts.index');
     }
 
     /**

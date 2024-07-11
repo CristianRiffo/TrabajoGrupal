@@ -1,12 +1,16 @@
-<table>
-<thead>
-    <tr>
-    <td>
-    Id
-    </td>
-    <td>
-    Title
-    </td>
+    <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Publicaciones') }}
+        </h2>
+    </x-slot>
+
+    
+    <table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
     <td>
     Content
     </td>
@@ -43,6 +47,8 @@
         {{ $p->user->name }}
     </td>
     </tr>
+    <a href>boton</a>
     @endforeach
     </tbody>
     </table>
+</x-app-layout>
