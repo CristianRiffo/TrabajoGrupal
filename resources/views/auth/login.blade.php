@@ -123,20 +123,18 @@ main{
     outline: none;
 }
 
-.contenedor__login-register form button{
+.contenedor__login-register button{
     padding: 10px 40px;
     margin-top: 40px;
     border: none;3
     font-size: 14px;
-    background: #46A2FD;
+    background: rgba(15, 45, 75, 0.79);
     font-weight: 600;
     cursor: pointer;
     color: white;
     outline: none;
+    width:100%;
 }
-
-
-
 
 .formulario__login{
     opacity: 1;
@@ -160,7 +158,7 @@ main{
                 <div class="caja__trasera-register">
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <a href="registro.html">
+                    <a href="/register">
                         <input type="button" value="Registrarse" />
                      </a>
                 </div>
@@ -178,8 +176,9 @@ main{
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                     <input type="password" placeholder="Contraseña" name="password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     
-                        <input type="button" value="Ingresar" />
+                    <button>Ingresar</button>
                      
                 </form>
 

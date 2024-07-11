@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str as Str;
 
 class PostController extends Controller
 {
@@ -31,6 +32,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge([
+            'slug' => Str::slug($request->title)
+        ]);
         Post::create($request->all());
         return redirect()->route('posts.index');
     }

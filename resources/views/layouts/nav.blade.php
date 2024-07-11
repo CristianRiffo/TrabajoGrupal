@@ -32,20 +32,13 @@
         </h4>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-          @hasrole('admin')
           <li>
-            <a href="#" class="nav-link link-body-emphasis">
-              Usuarios
-            </a>
-          </li>
-          @endhasrole
-          <li>
-            <a href="#" class="nav-link link-body-emphasis">
+            <a href="/posts" class="nav-link link-body-emphasis">
               Publicaciones
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link link-body-emphasis">
+            <a href="/categories" class="nav-link link-body-emphasis">
               Categorias
             </a>
           </li>
