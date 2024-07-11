@@ -128,7 +128,7 @@ main{
     margin-top: 40px;
     border: none;3
     font-size: 14px;
-    background: #46A2FD;
+    background: rgba(15, 45, 75, 0.79);
     font-weight: 600;
     cursor: pointer;
     color: white;
@@ -158,7 +158,7 @@ main{
                 <div class="caja__trasera-register">
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <a href="registro.html">
+                    <a href="/register">
                         <input type="button" value="Registrarse" />
                      </a>
                 </div>
