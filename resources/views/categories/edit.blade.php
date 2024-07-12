@@ -1,5 +1,8 @@
-option value="html" {{ old('category') === 'html' ? 'selected' : null }}>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+<form method="POST" action="{{ route('categories.update', $Category->slug) }}">
+    @csrf
+    @method('PUT')
+
+    <input type="text" name="title" value="{{ $Category->title }}">
+
+    <button>Actualizar</button>
+</form>

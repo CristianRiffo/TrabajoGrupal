@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('content');
             $table->boolean('posted')->default(1);
             $table->timestamps();
-            $table->foreignId('category_id')->constrained('categories')->default(1);
-            $table->foreignId('user_id')->constrained('users')->default(1);
+            $table->foreignId("category_id")->nullable()->default(1);
+            $table->foreignId('user_id')->constrained('users')->default(1)->nullable();
 
         });
     }

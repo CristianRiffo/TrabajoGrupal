@@ -4,7 +4,7 @@
             {{ __('Publicaciones') }}
         </h2>
     </x-slot>
-
+    <a href="{{ route('posts.create') }}">Crear Publicacion</a>
     <table style="
     width: 90%;
     margin: auto;

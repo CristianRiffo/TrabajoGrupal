@@ -23,7 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('posts', PostController::class);
-Route::resource('categories', CategoryController::class);
+Route::resource('/posts', PostController::class);
+
+Route::resource('/categories', CategoryController::class)->parameters([
+    'categories' => 'Category:slug'
+]);
 
 require __DIR__.'/auth.php';
