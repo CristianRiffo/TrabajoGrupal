@@ -31,11 +31,11 @@
                         <form method="POST" action="{{ route('categories.destroy', $category->slug) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="btn btn-danger" style="float: left" data-toggle="modal" data-target="#confirmdelete">
+                            <button type="button" class="btn btn-danger" style="float: left" data-toggle="modal" data-target="#confirmdelete-{{ $category->slug }}">
                                 Borrar
                             </button>
                             <!-- Modal -->
-                            <div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdelete" aria-hidden="true">
+                            <div class="modal fade" id="confirmdelete-{{ $category->slug }}" tabindex="-1" role="dialog" aria-labelledby="confirmdelete-{{ $category->slug }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

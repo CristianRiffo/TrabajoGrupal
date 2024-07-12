@@ -32,6 +32,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->input('posted') == "on"){
+            $request->merge([
+                'posted' => 1
+            ]); 
+        }else{
+            $request->merge([
+                'posted' => 0
+            ]); 
+        }
         $request->merge([
             'slug' => Str::slug($request->title)
         ]);
@@ -42,32 +51,51 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+        return view('posts.show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($slug)
     {
-        //
+        $Post = Post::where('slug', $slug)->first();
+        $categories = Category::get();
+        return view('posts.edit', compact('Post','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $slug)
     {
-        //
+        if($request->input('posted') == "on"){
+            $request->merge([
+                'posted' => 1
+            ]); 
+        }else{
+            $request->merge([
+                'posted' => 0
+            ]); 
+        }
+        $request->merge([
+            'slug' => Str::slug($request->title)
+        ]);
+        $Post = Post::where('slug', $slug)->first();
+        $Post->update($request->all());
+        return redirect()->route('posts.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, $slug)
     {
-        //
+        $Post = Post::where('slug', $slug)->first();
+        $Post->delete();
+        return redirect()->route('posts.index');
     }
 }

@@ -20,6 +20,12 @@
           <div class="form-group">
               <input class="form-control" style="display:none;" id="user_id" name='user_id' value="{{ Auth::User()->id }}" rows="3">{{ old('content') }}</textarea>
           </div>
+          @hasanyrole('admin')
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Publicado? </label>
+            <input type="checkbox" id="posted" name="posted" />
+          </div>
+          @endhasanyrole
           <div class="form-group">
             <label for="exampleFormControlSelect1">Categoria</label>
             <select class="form-control" id="category_id" name='category_id'>

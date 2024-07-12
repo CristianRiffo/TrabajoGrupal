@@ -18,7 +18,7 @@
             <div class="card h-100" style="background-color:#101a41;color:white;">
                 <div class="card-body">
                     <h5 class="card-title" style="text-decoration: underline;">Publicaciones</h5>
-                    <p class="card-text">25</p>
+                    <p class="card-text">{{ $countPosts }}</p>
                 </div>
             </div>
         </div>
@@ -26,21 +26,9 @@
             <div class="card h-100" style="background-color:#101a41;color:white;">
                 <div class="card-body">
                     <h5 class="card-title" style="text-decoration: underline;">Categorias</h5>
-                    <p class="card-text">4</p>
+                    <p class="card-text">{{ $countCategories }}</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    @foreach ($posts as $post)
-    @if ($post->User->name == Auth::User()->name)
-    {{ _('Titulo: '.$post->title) }}<br>
-    {{ _('Slug: '.$post->slug) }}<br>
-    {{ _('Content: '.$post->content) }}<br>
-    {{ _('Posteado: '.$post->posted) }}<br>
-    {{ _('Categoria: '.$post->category->title) }}<br>
-    {{ _('Autor: '.$post->user->name) }}<br>
-    {{ _('--------------------------------------')}}<br>
-    @endif
-    @endforeach
 </x-app-layout>

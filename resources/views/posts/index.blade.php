@@ -16,44 +16,53 @@
 ">
         <thead>
             <tr>
-                <td>Title</td>
+                <td>Titulo</td>
                 <td>
-                    Content
+                    Contenido
                 </td>
                 <td>
-                    Posted
+                    Publicado
                 </td>
                 <td>
-                    Category
+                    Categoria
                 </td>
                 <td>
-                    User
+                    Autor
                 </td>
                 <td>Accion</td>
             </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $p)
+            @foreach ($posts as $post)
                 <tr>
                     <td>
-                        {{ $p->title }}
+                        {{ $post->title }}
                     </td>
                     <td>
-                        {{ $p->content }}
+                        {{ $post->content }}
                     </td>
                     <td>
-                        {{ $p->posted }}
+                        @if ($post->posted)
+                            Verdadero
+                        @else
+                            Falso
+                        @endif
+                        
                     </td>
                     <td>
-                        {{ $p->category->title }}
+                        {{ $post->category->title }}
                     </td>
                     <td>
-                        {{ $p->user->name }}
+                        {{ $post->user->name }}
                     </td>
                     <td>
-                        <a href>boton 1</a>
-                        <a href>boton 2</a>
-                        <a href>boton 3</a>
+                        <a href="{{ route('posts.show', $post->slug) }}">Ver</a>
+                        <a href="{{ route('posts.edit', $post->slug) }}">Edit</a>
+                        <form method="POST" action="{{ route('posts.destroy', $post->slug) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Borrar">
+                        </form>
                     </td>
                 </tr>
             @endforeach
