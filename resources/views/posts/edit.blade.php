@@ -19,7 +19,7 @@
               <textarea class="form-control" id="content" name='content' rows="3">{{ $Post->content }}</textarea>
           </div>
           <div class="form-group">
-              <input class="form-control" style="display:none;" id="user_id" name='user_id' value="{{ Auth::User()->id }}" rows="3"></textarea>
+              <input class="form-control" style="display:none;" id="user_id" name='user_id' value="{{ $Post->user_id }}" rows="3"></textarea>
           </div>
           @hasanyrole('admin')
           <div class="form-group">
