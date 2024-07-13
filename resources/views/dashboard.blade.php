@@ -48,7 +48,7 @@
                 <tr class="component-filter" data-filter="{{$Post->Category->title}}" onclick="window.location='{{ route('posts.show', $Post->slug) }}'" style="cursor:pointer;">
                     <a href="{{ route('posts.show', $Post->slug) }}">
                         @if ($Post->image != '')
-                             width="60px" src="{{ url('/') }}/uploads/{{ $Post->image }}"></td>
+                            <td><img width="60px" src="{{ url('/') }}/uploads/{{ $Post->image }}"></td>
                         @else
                             <td></td>
                         @endif

@@ -6,7 +6,7 @@
     </x-slot>
     <div class="container mt-6">
       @hasanyrole('admin|writer')
-          <form method="post" action="{{ route('posts.update', $Post->slug) }}">
+          <form method="post" action="{{ route('posts.update', $Post->slug) }}" enctype="multipart/form-data">
           @csrf
           @method('PUT')
 
@@ -39,7 +39,8 @@
             <label for="exampleFormControlInput1">Portada</label>
             <input type="file" class="form-control" id="image" name='image'>
           </div>
-          <input type="submit" value="Crear">
+
+          <input type="submit" value="Actualizar">
         </form>
 
       @else
