@@ -9,16 +9,25 @@ use App\Models\Post;
 use App\Models\Category;
 
 Route::get('/', function () {
-    return view('welcome');
+    $PostsSlide = Post::where('image','!=',null)->get()->take(5);
+    $Posts = Post::get();
+    $Categories = Category::get();
+    return view('welcome',compact('Posts', 'Categories', 'PostsSlide'));
 });
 
-Route::get('/dashboard', function () {
-    $countUsers = User::count();
-    $countPosts = Post::count();
-    $countCategories = Category::count();
-    $posts = Post::get();
-    return view('dashboard', ['countUsers' => $countUsers,'countPosts' => $countPosts, 'countCategories' => $countCategories, 'posts'=>$posts]);
-})->name('dashboard');
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function () {
+        $countUsers = User::count();
+        $countPosts = Post::count();
+        $countCategories = Category::count();
+        $Posts = Post::get();
+        return view('dashboard', ['countUsers' => $countUsers,'countPosts' => $countPosts, 'countCategories' => $countCategories, 'Posts'=>$Posts]);
+    })->name('dashboard');
+
+    Route::resource('/categories', CategoryController::class)->parameters([
+        'categories' => 'Category:slug'
+    ]);
+}); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,10 +37,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/posts', PostController::class)->parameters([
     'posts' => 'Post:slug'
-]);
-
-Route::resource('/categories', CategoryController::class)->parameters([
-    'categories' => 'Category:slug'
 ]);
 
 require __DIR__.'/auth.php';

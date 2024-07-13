@@ -35,12 +35,15 @@
                 @endforeach
             </select>
           </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Portada</label>
+            <input type="file" class="form-control" id="image" name='image'>
+          </div>
           <input type="submit" value="Crear">
         </form>
 
       @else
-
-        <h3>No tienes permitido publicar contenido! :(</h3>
+        <h3>No tienes permitido acceder a esta vista! :(</h3>
         <p>Primero tienes que <a href="/login">ingresar</a></p>
 
     @endhasanyrole

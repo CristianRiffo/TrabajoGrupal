@@ -161,6 +161,8 @@ main{
                     <a href="/register">
                         <input type="button" value="Registrarse" />
                      </a>
+                     <br>
+                    <a style="color:white;position: fixed; bottom: 20px; text-decoration: underline;" href="/">Volver al inicio</a>
                 </div>
             </div>
 

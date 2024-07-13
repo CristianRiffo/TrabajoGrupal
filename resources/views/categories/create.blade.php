@@ -18,7 +18,7 @@
 
       @else
 
-        <h3>No tienes permitido publicar contenido! :(</h3>
+        <h3>No tienes permitido acceder a esta vista! :(</h3>
         <p>Primero tienes que <a href="/login">ingresar</a></p>
 
     @endhasanyrole

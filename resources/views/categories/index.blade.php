@@ -27,13 +27,17 @@
                         <p style="margin:0; padding:0px">No Aplicable</p>
                     @endif
                     @if (!$loop->first)
+                    
                     <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#{{$category->slug}}" style="float: left;">Edit</button>
+                    
                         <form method="POST" action="{{ route('categories.destroy', $category->slug) }}">
                             @csrf
                             @method('DELETE')
+                            @hasrole('admin')
                             <button type="button" class="btn btn-danger" style="float: left" data-toggle="modal" data-target="#confirmdelete-{{ $category->slug }}">
                                 Borrar
                             </button>
+                            @endhasrole
                             <!-- Modal -->
                             <div class="modal fade" id="confirmdelete-{{ $category->slug }}" tabindex="-1" role="dialog" aria-labelledby="confirmdelete-{{ $category->slug }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">

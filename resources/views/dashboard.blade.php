@@ -31,4 +31,35 @@
             </div>
         </div>
     </div>
+    @hasanyrole('admin|writer')
+    <h2>Tus ultimas publicaciones</h2>
+    <table class="table" style="margin: 0 auto; width:90%; margin-bottom:55px;">
+        <thead>
+          <tr>
+            <th scope="col">Portada</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Autor</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach ($Posts as $Post)
+            @if($Post->user_id == Auth::User()->id) 
+                <tr class="component-filter" data-filter="{{$Post->Category->title}}" onclick="window.location='{{ route('posts.show', $Post->slug) }}'" style="cursor:pointer;">
+                    <a href="{{ route('posts.show', $Post->slug) }}">
+                        @if ($Post->image != '')
+                             width="60px" src="{{ url('/') }}/uploads/{{ $Post->image }}"></td>
+                        @else
+                            <td></td>
+                        @endif
+                    <td>{{$Post->title}}</td>
+                    <td>{{$Post->Category->title}}</td>
+                    <td>{{$Post->User->name}}</td>
+                    </a>
+                </tr>    
+            @endif
+        @endforeach
+        </tbody>
+    </table>
+    @endhasanyrole
 </x-app-layout>

@@ -32,19 +32,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->input('posted') == "on"){
-            $request->merge([
-                'posted' => 1
-            ]); 
-        }else{
-            $request->merge([
-                'posted' => 0
-            ]); 
+        //Proceso de almacenar imagen
+        $insert = new Post;
+        $insert->title = $request->title;
+        $insert->content = $request->content;
+        $insert->slug = Str::slug($request->title);
+        $insert->posted = ($request->posted == 'on') ? 1 : 0; 
+        $insert->category_id = $request->category_id;
+        $insert->user_id = $request->user_id;
+
+        if($request->file('image') != '' ){
+        $filePath = public_path('uploads');
+        $file = $request->file('image');
+        $imageName = time(). $file->getClientOriginalName();
+        $request->image->move($filePath, $imageName);
+        $insert->image = $imageName;
         }
-        $request->merge([
-            'slug' => Str::slug($request->title)
-        ]);
-        Post::create($request->all());
+
+        $insert->save();
         return redirect()->route('posts.index');
     }
 
