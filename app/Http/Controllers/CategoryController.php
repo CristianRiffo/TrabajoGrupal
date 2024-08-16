@@ -14,6 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        //test
         $categories = Category::get();
         return view('categories.index', compact('categories'));
     }
